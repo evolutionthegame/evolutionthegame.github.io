@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Evolution</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.17.0/dist/phaser.js"></script>
+  <meta charset="utf-8">
+  <link href="https://static.wixstatic.com/media/99252d_50a0306b3e204c0b9444d905df946f64~mv2.png" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+  <script>
+  class StartMenu extends Phaser.Scene {
+  constructor() {
+  };
+  preload() {
+    this.load.image('Background', 'https://static.wixstatic.com/media/99252d_313abf7b2e094001bcbaac3c61002a6c~mv2.png');
+  };
+  create() {
+    this.add.sprite(946, 475, 'Background');
+  }
+  update() {
+    /*Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.*/
+  }
+};
+class BattlefieldNeutral extends Phaser.Scene {
+  constructor() {
+    super({ key: 'BattlefieldNeutral' })
+  };
+preload() {
+this.load.image('Base', 'https://static.wixstatic.com/media/99252d_7b2005778dfa4d7aacbf38c91e8e5252~mv2.png');
+
+this.load.image('GoToLab', 'https://static.wixstatic.com/media/99252d_c047ee649ca44f6dbdb7e4b6a02d746b~mv2.png');
+};
+create() {
+  this.add.sprite(946, 475, 'Background');
+  this.add.sprite(257, 692, 'Base');
+  gameState.GoToLab = this.add.sprite(240, 47, 'GoToLab');
+};
+update() {
+  gameState.GoToLab.setInteractive()
+  gameState.GoToLab.on('pointerup', () => {  
+      this.scene.stop('BattlefieldNeutral')
+      this.scene.start('Lab')
+    })
+};
+};
+class Lab extends Phaser.Scene {
+  constructor() {
+    super({ key: 'Lab' });
+  };
+preload() {
+this.load.image('Background', 'https://static.wixstatic.com/media/99252d_313abf7b2e094001bcbaac3c61002a6c~mv2.png');
+this.load.image('Lab_castle', 'https://static.wixstatic.com/media/99252d_b73c18c2b04549869f14be69a2f57fc2~mv2.png');
+this.load.image('GoToBattlefield', 'https://static.wixstatic.com/media/99252d_1fe01afe899745b2b69b6b4c40a7eb14~mv2.png');
+};
+create() {
+  
+  this.add.sprite(946, 817, 'Lab_castle');
+  gameState.GoToBattlefield = this.add.sprite(1655, 64, 'GoToBattlefield')
+};
+update() {
+  gameState.GoToBattlefield.setInteractive()
+  gameState.GoToBattlefield.on('pointerup', () => {  
+      this.scene.stop('Lab')
+      this.scene.start('BattlefieldNeutral')
+    })
+};
+};
+
+const gameState = {}
+const config = {
+  type: Phaser.AUTO,
+  height: 949,
+  width: 1895,
+  backgroundColor: '#FFFFFF',
+  scene: [StartMenu, BattlefieldNeutral, Lab]
+}
+const game = new Phaser.Game(config);
+</script>
+  <script>console.clear(); console.warn('The game might run extremely slowly. Make sure you have a good Internet connection when playing. The game is best played with a window of at least 1895px by 949px.');console.info('©Copyright 2019 David Xu. Most images in this game are drawn using the sprite drawer in GameMaker Studio 2 which are sometimes combined to the web app at https://sketch.io/sketchpad/. This game was made with');
+</script>
+</body>
+</html>
