@@ -11,7 +11,15 @@ permalink:/404.html
 	<title>Error 404 - Page not found</title>
 </head>
 <body>
-	<h1 style="text-align: center; font-family: Sans-serif; width: 100vw">Error 404</h1>
-	<h1 style="text-align: center; font-family: Sans-serif; width: 100vw">(That means that the URL you typed in the address bar is invalid)</h1>
+	<script>
+		var Error_1 = document.createElement("h1");
+		var Error_2 = document.createElement("h1");
+  		Error_1.innerHTML = "Error 404";
+  		Error_1.setAttribute("style", "text-align: center; font-family: Sans-serif; width: 99vw");
+  		document.body.appendChild(Error_1);
+  		Error_2.innerHTML = "(That means that the URL you typed in the address bar is invalid)";
+  		Error_2.setAttribute("style", "text-align: center; font-family: Sans-serif; width: 99vw");
+  		document.body.appendChild(Error_2);
+</script>
 </body>
 </html>
